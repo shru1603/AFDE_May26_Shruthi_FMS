@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database.database import Base, engine
-from backend import models  # noqa: F401 — registers models with Base
+from backend import models  
 from backend.routers import feedback
 
 Base.metadata.create_all(bind=engine)
