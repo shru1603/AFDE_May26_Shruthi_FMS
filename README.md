@@ -156,6 +156,5 @@ To inspect the database manually, open `database/feedback.db` with any SQLite vi
 | PUT    | `/feedback/{id}`      | Update feedback by ID        |
 | DELETE | `/feedback/{id}`      | Delete feedback by ID        |
 | GET    | `/search`             | Search/filter feedback       |
-| GET    | `/stats`              | Get dashboard statistics     |
 
 API documentation (Swagger UI) is available at `http://127.0.0.1:8000/docs`

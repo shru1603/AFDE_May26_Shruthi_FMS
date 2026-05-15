@@ -16,7 +16,6 @@
 | PUT    | `/feedback/{feedback_id}` | Update feedback by ID           |
 | DELETE | `/feedback/{feedback_id}` | Delete feedback by ID           |
 | GET    | `/search`                 | Search and filter feedback      |
-| GET    | `/stats`                  | Get dashboard statistics        |
 
 ---
 
@@ -313,46 +312,6 @@ GET /search?keyword=good&rating=4&program_name=React Workshop
 ```
 
 Returns an empty array `[]` if no results match.
-
----
-
-### 8. Dashboard Statistics
-
-**GET** `/stats`
-
-Returns aggregated statistics and the 5 most recent feedback entries for the admin dashboard.
-
-**Response — 200 OK**
-```json
-{
-  "total": 10,
-  "avg_rating": 4.2,
-  "recent": [
-    {
-      "feedback_id": 10,
-      "participant_name": "Anita R",
-      "program_name": "Data Science Bootcamp",
-      "rating": 5,
-      "comments": "Excellent hands-on experience.",
-      "submitted_at": "2026-05-15T14:00:00"
-    },
-    {
-      "feedback_id": 9,
-      "participant_name": "Kiran S",
-      "program_name": "React Workshop",
-      "rating": 4,
-      "comments": null,
-      "submitted_at": "2026-05-15T13:30:00"
-    }
-  ]
-}
-```
-
-| Field        | Type    | Description                              |
-|--------------|---------|------------------------------------------|
-| `total`      | integer | Total number of feedback entries         |
-| `avg_rating` | float   | Average rating rounded to 1 decimal place |
-| `recent`     | array   | Up to 5 most recent feedback entries     |
 
 ---
 

@@ -38,11 +38,3 @@ def delete_feedback(db: Session, feedback_id: int):
 
 def search_feedback(db: Session, keyword=None, rating=None, program_name=None):
     return crud.search_feedback(db, keyword, rating, program_name)
-
-
-def get_dashboard_stats(db: Session):
-    all_feedback = crud.get_all_feedback(db)
-    total = len(all_feedback)
-    avg_rating = round(sum(f.rating for f in all_feedback) / total, 1) if total else 0
-    recent = sorted(all_feedback, key=lambda f: f.submitted_at, reverse=True)[:5]
-    return {"total": total, "avg_rating": avg_rating, "recent": recent}

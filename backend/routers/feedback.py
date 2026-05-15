@@ -54,8 +54,3 @@ def delete_feedback(feedback_id: int, db: Session = Depends(get_db)):
         return {"message": "Feedback deleted successfully"}
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
-
-
-@router.get("/stats")
-def get_dashboard_stats(db: Session = Depends(get_db)):
-    return feedback_service.get_dashboard_stats(db)
