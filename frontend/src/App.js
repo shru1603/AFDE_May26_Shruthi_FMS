@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, NavLink, Navigate } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
 import SubmitFeedback from './pages/SubmitFeedback'
 import FeedbackList from './pages/FeedbackList'
@@ -20,7 +20,7 @@ function App() {
         <span className="brand">FMS</span>
         {role === 'admin' && <NavLink to="/">Dashboard</NavLink>}
         {role === 'admin' && <NavLink to="/feedback">All Feedback</NavLink>}
-        <NavLink to="/submit">Submit Feedback</NavLink>
+        {role !== 'admin' && <NavLink to="/submit">Submit Feedback</NavLink>}
         <button className="logout-btn" onClick={() => setRole(null)}>Logout</button>
       </nav>
       <main>
@@ -30,12 +30,13 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/feedback" element={<FeedbackList />} />
               <Route path="/feedback/:id" element={<FeedbackDetail />} />
-              <Route path="/submit" element={<SubmitFeedback />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </>
           ) : (
             <>
               <Route path="/" element={<SubmitFeedback />} />
               <Route path="/submit" element={<SubmitFeedback />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </>
           )}
         </Routes>
