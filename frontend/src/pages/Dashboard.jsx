@@ -32,7 +32,7 @@ function Dashboard() {
         </div>
       </div>
 
-      <h3 style={{ marginBottom: '1rem', color: '#2c3e50' }}>Recent Feedback</h3>
+      <h3 style={{ marginBottom: '1rem', color: '#004d40' }}>Recent Feedback</h3>
       {recent.length === 0 ? (
         <p>No feedback submitted yet.</p>
       ) : (

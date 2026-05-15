@@ -4,7 +4,7 @@ import { getAllFeedback, searchFeedback } from '../services/feedbackService'
 
 const ratingLabel = { 1: 'Poor', 2: 'Fair', 3: 'Good', 4: 'Very Good', 5: 'Excellent' }
 
-function FeedbackList() {
+function FeedbackList({ readonly = false }) {
   const [feedbackList, setFeedbackList] = useState([])
   const [keyword, setKeyword] = useState('')
   const [rating, setRating] = useState('')
@@ -34,7 +34,7 @@ function FeedbackList() {
     <div className="page">
       <h2>All Feedback</h2>
 
-      <div className="filters">
+      {!readonly && <div className="filters">
         <input
           placeholder="Search by keyword..."
           value={keyword}
@@ -53,7 +53,7 @@ function FeedbackList() {
         />
         <button onClick={handleSearch}>Search</button>
         <button onClick={handleReset}>Reset</button>
-      </div>
+      </div>}
 
       {feedbackList.length === 0 ? (
         <p>No feedback found.</p>

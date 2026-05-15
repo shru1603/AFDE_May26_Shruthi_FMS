@@ -5,7 +5,7 @@ import FeedbackForm from '../components/FeedbackForm'
 
 const ratingLabel = { 1: 'Poor', 2: 'Fair', 3: 'Good', 4: 'Very Good', 5: 'Excellent' }
 
-function FeedbackDetail() {
+function FeedbackDetail({ readonly = false }) {
   const { id } = useParams()
   const navigate = useNavigate()
   const [feedback, setFeedback] = useState(null)
@@ -48,8 +48,8 @@ function FeedbackDetail() {
           <p><strong>Comments:</strong> {feedback.comments || '—'}</p>
           <p><strong>Submitted:</strong> {new Date(feedback.submitted_at).toLocaleString()}</p>
           <div className="actions">
-            <button onClick={() => setEditing(true)}>Edit</button>
-            <button onClick={handleDelete} className="danger">Delete</button>
+            {!readonly && <button onClick={() => setEditing(true)}>Edit</button>}
+            {!readonly && <button onClick={handleDelete} className="danger">Delete</button>}
             <button onClick={() => navigate('/feedback')}>Back</button>
           </div>
         </div>
